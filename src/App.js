@@ -5,8 +5,19 @@ import Navbar from './components/Navbar';
 import About from './components/About'
 import Blog from './components/Blog'
 import Protected from './components/Protected';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [items, setItems] = useState([]);
+
+useEffect(() => {
+  const currentState = JSON.parse(localStorage.getItem('state'));
+  if (currentState) {
+   setItems(currentState);
+  }
+}, []);
+
   return (
     <BrowserRouter>
     <div className="App">
@@ -15,7 +26,7 @@ function App() {
         <Route path='/' element={HomePage}/>
         <Route path='/about' element={About}/>
         <Route path='/blog' element={
-        <Protected isLoggedIn={Navbar.returnCondition}>
+        <Protected isLoggedIn={items}>
         <Blog />
         </Protected>}/>
       </Routes>

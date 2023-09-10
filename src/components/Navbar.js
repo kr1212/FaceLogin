@@ -11,14 +11,6 @@ export default function Navbar(){
     faceio = new faceIO("fioa49e3");
 }, []);
 
-  const returnCondition = () => {
-    if(isLoggedIn){
-      return true
-    }
-    else{
-      return false
-    }
-  }
   const [isLoggedIn, setisLoggedIn] = useState(null);
   const handleLogIn = async () => {
     try {
@@ -51,6 +43,10 @@ export default function Navbar(){
  const handleLogOut = () => {
    setisLoggedIn(false);
  };
+
+ useEffect(() => {
+  localStorage.setItem('state', JSON.stringify(isLoggedIn));
+}, [isLoggedIn]);
 
     return(
       <nav className="flex align-center">
