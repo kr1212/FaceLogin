@@ -11,6 +11,14 @@ export default function Navbar(){
     faceio = new faceIO("fioa49e3");
 }, []);
 
+  const returnCondition = () => {
+    if(isLoggedIn){
+      return true
+    }
+    else{
+      return false
+    }
+  }
   const [isLoggedIn, setisLoggedIn] = useState(null);
   const handleLogIn = async () => {
     try {
@@ -19,7 +27,7 @@ export default function Navbar(){
       });
       console.log(`${response.user}`)
       setisLoggedIn(true)
-      return true
+      
     } catch (error) {
       console.log(error);
     }

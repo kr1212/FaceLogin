@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={HomePage}/>
         <Route path='/about' element={About}/>
         <Route path='/blog' element={
-        <Protected isLoggedIn={Navbar.handleLogIn}>
+        <Protected isLoggedIn={Navbar.returnCondition}>
         <Blog />
         </Protected>}/>
       </Routes>
